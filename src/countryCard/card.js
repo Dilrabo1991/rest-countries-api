@@ -6,6 +6,25 @@ import Filter from '../components/main/Filter'
 const url = "https://restcountries.com/v3.1/all"
 
 const Card = () => {
+  const region = [
+    {
+      name:"Africa",
+    },
+    {
+      name:"Americas",
+    },
+    {
+      name:"Asia",
+    },
+    {
+      name:"Europe",
+    },
+    {
+      name:"Oceania",
+    }
+
+  ]
+
     const [contries, setContries] = useState([])
     const [searchText, setSearchText] = useState('')
 
@@ -29,6 +48,18 @@ const Card = () => {
         fetchDataContries()
     }, [])
 
+  const filterByRegion = async (region) => {
+    const response = await fetch(`https://restcountries.com/v3.1/region/${region}`)
+    const data = await response.json()
+    setContries(data)
+  }
+
+
+    function handleFilterByRegion(e){
+      e.preventDefault();
+     filterByRegion();
+    }
+
     return (
         <>
         <div className='topBar'>
@@ -50,7 +81,21 @@ const Card = () => {
             
           
         <div className='selected'>
-          <Filter/> 
+        <form onSubmit={handleFilterByRegion}>
+    <select 
+    value={region.name}
+    onChange={(e) => filterByRegion(e.target.value)}
+    className='select'>
+{
+  region.map((region , index)=>{
+    return(
+      <option className="option" key={index} value={region.name}>{region.name}</option>
+    )
+  })
+}
+   
+    </select>
+    </form>
         </div>
         </div>
         </div>
