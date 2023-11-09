@@ -1,18 +1,45 @@
+import { useState } from "react"
+import { useParams } from "react-router-dom"
 
 
 
-const Filter = () => {
+const Filter = ({setCountries}) => {
  
+ 
+ const [filterCountries, setFilterCountries] = useState([])
+  const region = [
+    {
+      name:"Africa",
+    },
+    {
+      name:"Americas",
+    },
+    {
+      name:"Asia",
+    },
+    {
+      name:"Europe",
+    },
+    {
+      name:"Oceania",
+    }
+
+  ]
+  
   return (
+    <form >
     <select className='select'>
-    <option value="Filter by Region">Filter by Region</option>
-    <option value="Africa">Africa</option>
-    <option value="Americas">Americas</option>
-    <option value="Asia">Asia</option>
-    <option value="Europe">Europe</option>
-    <option value="Oceania">Oceania</option>
+{
+  region.map((region , index)=>{
+    return(
+      <option className="option" key={index} value={region.name}>{region.name}</option>
+    )
+  })
+}
+   
     </select>
+    </form>
   )
 }
 
-export default Filter
+export default Filter 

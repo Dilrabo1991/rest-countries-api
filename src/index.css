@@ -86,13 +86,12 @@ padding-left:10px;
 box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
 }
 select option{
-width: 200px;
-height: 164px;
 flex-shrink: 0;
 border-radius: 5px;
 background: #FFF;
 border:none;
 box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+padding-left:10px;
 }
 .cardWrp{
   display: flex;
@@ -117,7 +116,7 @@ row-gap: 20px;
   height: 200px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  object-fit: cover;
+
 }
 .text{
   padding: 20px;
@@ -148,4 +147,8 @@ row-gap: 20px;
 .link{
   text-decoration: none;
   color: #000;
+}
+.topBar{
+  width: 100%;
+  padding:40px;
 }
